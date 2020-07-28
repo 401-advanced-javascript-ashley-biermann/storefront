@@ -1,8 +1,4 @@
 // Products
-// State should be a list of all products
-// Each product should have a category association, name, description, price, inventory count
-// Create an action that will trigger when the active category is changed
-// HINT: Multiple reducers can respond to the same actions
 
 const initialState = {
   products: [
@@ -10,8 +6,22 @@ const initialState = {
       category: 'associated-category',
       name: 'Product Name',
       description: 'A nice little product description goes here',
+      price: '$$',
+      inventoryCount: 5
+    },
+    {
+      category: 'associated number 2',
+      name: 'Product Name',
+      description: 'A nice little product description goes here',
       price: '$$$',
       inventoryCount: 10
+    },
+    {
+      category: 'associated number 3',
+      name: 'Product Name',
+      description: 'A nice little product description goes here',
+      price: '$',
+      inventoryCount: 3
     }
   ]
 }
@@ -24,13 +34,13 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'FILTER': // 'UPDATEACTIVE'
-      let filteredProducts = [];
-      for (let i = 0; i < products.length; i++) {
-        if (products[i].category === payload) {
-          filteredProducts.push(products[i]);
+    case 'FILTER': // 'CHANGE'
+      let filteredProducts = []; //TODO: SET THE STATE so REAcT KNOWS
+      for (let i = 0; i < state.products.length; i++) {
+        if (state.products[i].category === payload) {
+          filteredProducts.push(state.products[i]); //TODO: MAKE THIS ADJUST STATE
         }
-        return { products: filteredProducts }
+        return { ...state, products: filteredProducts } //TODO: Adjust state rather than mess up the whole products array
       }
     case 'RESET':
       return initialState;
@@ -40,7 +50,11 @@ export default (state = initialState, action) => {
 }
 
 // ACTIONS
-// could this just be the UPDATEACTIVE from categories?
+
+// Create an action that will trigger when the active category is changed
+// HINT: Multiple reducers can respond to the same actions
+
+// could this just be the CHANGECATEGORY from categories?
 export const filter = (categoryName) => {
   return {
     type: 'FILTER',

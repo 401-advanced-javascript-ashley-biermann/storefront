@@ -11,11 +11,13 @@ class Header extends React.Component {
   render() {
     return (
       <Paper elementType="div" id="header" elevation={2}>
+        <Container elementType="section">
           <Typography variant="h3" component="h1" gutterBottom>Trinkets & Bobbles</Typography>
-          <Container>
-            <Typography paragraph>CART (0)</Typography>
-            <ShoppingCartIcon />
-          </Container>
+        </Container>
+        <Container>
+          <Typography paragraph>CART (0)</Typography>
+          <ShoppingCartIcon />
+        </Container>
       </Paper>
     )
   }

@@ -3,24 +3,37 @@
  * @component store
  */
 // STORE
+
 const initialState = {
   categories: [
     {
-      normalizedName: 'normalized-name',
-      displayName: 'Display Name',
+      normalizedName: 'Apparel',
+      displayName: 'Clothes',
+      description: 'A nice little description of category goes here'
+    },
+    {
+      normalizedName: 'Groceries',
+      displayName: 'Food',
+      description: 'A nice little description of category goes here'
+    },
+    {
+      normalizedName: 'Electronics',
+      displayName: 'Electronic',
       description: 'A nice little description of category goes here'
     }
   ],
   activeCategory: '',
 }
+// Create an action that will trigger the reducer to change the active category
+// Update the active category in the reducer when this action is dispatched
 
 // REDUCERS
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'UPDATEACTIVE':
-      return { activeCategory: payload };
+    case 'CHANGECATEGORY':
+      return {...state, activeCategory: payload };
     case 'RESET':
       return initialState;
     default:
@@ -29,9 +42,9 @@ export default (state = initialState, action) => {
 }
 
 // ACTIONS
-export const updateActive = (categoryName) => {
+export const changeCategory = (categoryName) => {
   return {
-    type: 'UPDATEACTIVE',
+    type: 'CHANGECATEGORY',
     payload: categoryName
   }
 }
