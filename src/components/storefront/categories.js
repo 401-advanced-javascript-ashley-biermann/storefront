@@ -21,11 +21,10 @@ class Categories extends React.Component {
         <Paper elementType="section">
           <Typography variant="h4">Browse Our Categories</Typography>
           <List>
-
             {categoriesArr.map((category, idx) => {
-              console.log('category', category);
-              // <ListItem></ListItem>
-              // <li key={idx} onClick={() => this.props.changeCategory(category.normalizedName)}>{category.displayName}</li>
+              return (
+                <ListItem key={idx} onClick={() => this.props.changeCategory(category.normalizedName)}>{category.displayName}</ListItem>
+              )
             })}
           </List>
         </Paper>

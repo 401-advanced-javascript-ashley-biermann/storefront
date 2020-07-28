@@ -1,30 +1,29 @@
 // Products
 
-const initialState = {
-  products: [
+const initialState =
+  [
     {
-      category: 'associated-category',
-      name: 'Product Name',
+      category: 'Groceries',
+      name: 'Brussel Sprouts',
       description: 'A nice little product description goes here',
       price: '$$',
       inventoryCount: 5
     },
     {
-      category: 'associated number 2',
-      name: 'Product Name',
+      category: 'Electronics',
+      name: 'Computer',
       description: 'A nice little product description goes here',
       price: '$$$',
       inventoryCount: 10
     },
     {
-      category: 'associated number 3',
-      name: 'Product Name',
+      category: 'Apparel',
+      name: 'Sunscreen',
       description: 'A nice little product description goes here',
       price: '$',
       inventoryCount: 3
     }
   ]
-}
 
 // REDUCERS
 
