@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [submission PR]()
+- [submission PR](https://github.com/401-advanced-javascript-ashley-biermann/storefront/pull/2)
 - [ci/cd](https://github.com/401-advanced-javascript-ashley-biermann/notes/tree/master/.github/workflows) (GitHub Actions)
 - [back-end server url]() (when applicable)
 - [front-end application]() (when applicable)
@@ -19,16 +19,12 @@
 
 - `npm start`
 
-#### How to use your library (where applicable)
-
 #### Tests
 
 - `npm test`
-- How do you run tests?
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
+- not yet implemented
 
 #### UML
 
-- ![]()
-Link to an image of the UML for your application and response to events
+- ![uml](./storefrontuml.jpg)
+
