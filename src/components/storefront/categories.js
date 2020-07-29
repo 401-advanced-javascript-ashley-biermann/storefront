@@ -9,34 +9,71 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Paper, List, ListItem, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { changeCategory } from '../../store/categories.js';
 
-class Categories extends React.Component {
-  render() {
-    let categoriesArr = this.props.categories.categories;
-    console.log('looking for changeCategory', this.props.changeCategory);
-    return (
-      <Paper elevation={2} elementType="div">
-        <Paper elementType="section">
-          <Typography variant="h4">Browse Our Categories</Typography>
+const useStyles = makeStyles((theme) => ({
+  title: {
+    display: 'flex',
+    paddingLeft: '24px'
+  },
+
+  list: {
+    display: 'flex',
+    alignItem: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: '10px'
+
+  },
+
+  listItem: {
+    display: 'inline',
+    // flexDirection: 'row'
+  },
+
+  mainCategory: {
+    display: 'flex',
+  }
+}));
+
+const Categories = props => {
+
+  let categoriesArr = props.categories.categories;
+  // console.log('looking for changeCategory', this.props.changeCategory);
+  const classes = useStyles();
+  return (
+    <Paper elevation={0} elementType="div">
+      <Paper elementType="section">
+        <Typography className={classes.title} variant="h4">Browse Our Categories</Typography>
+        <div className={classes.list}>
           <List>
             {categoriesArr.map((category, idx) => {
               return (
-                <ListItem key={idx} onClick={() => this.props.changeCategory(category.normalizedName)}>{category.displayName}</ListItem>
+                <ListItem className={classes.listItem} key={idx} onClick={() => props.changeCategory(category)}>{category.displayName}</ListItem>
               )
             })}
           </List>
-        </Paper>
-        <Paper elementType="main"> MAIN
-        </Paper>
+        </div>
       </Paper>
-    )
-  }
+      <div className={classes.mainCategory}>
+        {/* <Paper elementType="main"> */}
+        <Typography variant="h5">{props.categories.activeCategory.name}</Typography>
+        <Typography variant="p" >
+          {props.categories.activeCategory.description}
+          </Typography>
+        <Typography>
+
+        </Typography>
+
+        {/* </Paper> */}
+      </div>
+    </Paper>
+  )
 }
 
+
 const mapStateToProps = state => {
-  console.log('state from mapStateToProps in categories', state);
   return {
     categories: state.categories,
   }
