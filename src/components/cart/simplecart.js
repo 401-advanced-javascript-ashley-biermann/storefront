@@ -4,10 +4,16 @@ import { connect } from 'react-redux';
 import { Paper, List, ListItem, Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { deleteItem } from '../../store/cart.js';
+import { incrementInventory } from '../../store/products.js';
 
 const SimpleCart = props => {
-  // console.log('props form SIMPLECART', props);
   let { cart } = props;
+
+  function removeFromCart(item) {
+    props.deleteItem(item);
+    props.incrementInventory(item);
+  }
+
   return (
     <>
       <Paper elevation={1} elementType="section">
@@ -18,8 +24,7 @@ const SimpleCart = props => {
             return (
               <>
                 <ListItem>{item.name}</ListItem>
-                <Button variant="contained" onClick={() => props.deleteItem(item)} color="secondary" startIcon={<DeleteIcon />}
-                  // className={classes.button}
+                <Button variant="contained" onClick={() => removeFromCart(item)} color="secondary" startIcon={<DeleteIcon />}
                 >
                   Remove</Button>
               </>
@@ -39,7 +44,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = { deleteItem };
+const mapDispatchToProps = { deleteItem, incrementInventory };
 
 export default connect(
   mapStateToProps,

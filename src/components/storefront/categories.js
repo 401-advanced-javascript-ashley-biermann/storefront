@@ -2,16 +2,12 @@
  * @component Categories
  */
 
-// A <Categories> component
-// Shows a list of all categories
-// Dispatches an action when one is clicked to “activate” it
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Paper, List, ListItem, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { changeCategory } from '../../store/categories.js';
+import { changeCategory, fetchCategories } from '../../store/categories.js';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -38,15 +34,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Categories = props => {
-
+  
+  useEffect(() => {
+    props.fetchCategories();
+  }, []);
+  
   let categoriesArr = props.categories.categories;
-  // console.log('looking for changeCategory', this.props.changeCategory);
   const classes = useStyles();
+  
   return (
     <Paper elevation={0} elementType="div">
       <Paper elementType="section">
         <Typography className={classes.title} variant="h4">Browse Our Categories</Typography>
         <div className={classes.list}>
+
           <List>
             {categoriesArr.map((category, idx) => {
               return (
@@ -54,6 +55,7 @@ const Categories = props => {
               )
             })}
           </List>
+
         </div>
       </Paper>
       <div className={classes.mainCategory}>
@@ -61,7 +63,7 @@ const Categories = props => {
         <Typography variant="h5">{props.categories.activeCategory.name}</Typography>
         <Typography variant="p" >
           {props.categories.activeCategory.description}
-          </Typography>
+        </Typography>
         <Typography>
 
         </Typography>
@@ -72,14 +74,13 @@ const Categories = props => {
   )
 }
 
-
 const mapStateToProps = state => {
   return {
     categories: state.categories,
   }
 }
 
-const mapDispatchToProps = { changeCategory };
+const mapDispatchToProps = { changeCategory, fetchCategories };
 
 export default connect(
   mapStateToProps,

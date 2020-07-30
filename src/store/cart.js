@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
       for (let i = 0; i < state.length; i++) {
         console.log('state', state);
         console.log('deleted item', payload.name);
-        // TODO: this will only delete the first item added into the cart 
+        // FIXME: doesn't always seem to delete an item
         if (state[i].name === payload.name) {
           state.splice(i, 1);
         }
@@ -40,11 +40,5 @@ export const deleteItem = (item) => {
   return {
     type: 'DELETE_ITEM',
     payload: item
-  }
-}
-
-export const reset = () => {
-  return {
-    type: 'RESET'
   }
 }
