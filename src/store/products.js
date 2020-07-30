@@ -24,6 +24,13 @@ export default (state = initialState, action) => {
     case 'FETCH_PRODUCTS':
       return payload;
     case 'INCREMENT_INVENTORY':
+      //TODO: get this functioning
+
+      // from class
+      // case 'INCREMENT_VOTES':
+      //   return state.map(candidate => candidate.id === payload.id ? payload : candidate);
+
+
       console.log('In the increment inventory');
       return state;
     case 'LOWER_INVENTORY':
