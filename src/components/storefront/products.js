@@ -19,6 +19,7 @@ const If = (props) => {
 }
 
 const Products = props => {
+  let { categories, products } = props;
 
   useEffect(() => {
     props.fetchProducts();
@@ -28,34 +29,25 @@ const Products = props => {
     props.lowerInventory(product);
     props.addItem(product);
   }
-  console.log('props in products', props.products.products);
   
-  let { categories, products } = props;
-
   return (
     <Paper elevation={2} elementType="div">
       <List>
         {products.map((product, idx) => {
-
           return (
-
             <If condition={product.category === categories.activeCategory.normalizedName && product.inventoryCount > 0}>
               <Card variant="outlined">
                 <ListItem key={idx + '1'}>Product: {product.name}</ListItem>
                 <ListItem key={idx + '2'}>Description: {product.description}</ListItem>
                 <ListItem key={idx + '3'}>Price: {product.price}</ListItem>
                 <Button varient="outlined" onClick={() => addToCart(product)}> Add To Cart </Button>
-
               </Card>
             </If>
           )
-
         })}
-
       </List>
     </Paper>
   )
-
 }
 
 // tell our connect function add to component props whatever we need from the redux store / state 
