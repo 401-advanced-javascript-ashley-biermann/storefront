@@ -1,34 +1,14 @@
-// Products
+/** 
+ * Products store
+ * @component store
+ */
 
-const initialState =
-  [
-    {
-      category: 'Groceries',
-      name: 'Brussel Sprouts',
-      description: 'A nice little product description goes here',
-      price: '$$',
-      inventoryCount: 5
-    },
-    {
-      category: 'Electronics',
-      name: 'Computer',
-      description: 'A nice little product description goes here',
-      price: '$$$',
-      inventoryCount: 10
-    },
-    {
-      category: 'Apparel',
-      name: 'Sunscreen',
-      description: 'A nice little product description goes here',
-      price: '$',
-      inventoryCount: 3
-    }
-  ]
+import axios from 'axios';
+
+// STORE
+const initialState = [];
 
 // REDUCERS
-
-// Create a reducer that will filter the products list based on the active category
-
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
@@ -43,19 +23,16 @@ export default (state = initialState, action) => {
       }
     case 'LOWER_INVENTORY':
       console.log('In the lower inventory case')
-
+      // TODO: Get this functioning
       return state;
-    // case 'RESET':
-    //   return initialState;
+    case 'FETCH_PRODUCTS':
+      return payload;
     default:
       return state;
   }
 }
 
 // ACTIONS
-
-// Create an action that will trigger when the active category is changed
-// HINT: Multiple reducers can respond to the same actions
 
 export const filter = (categoryName) => {
   return {
@@ -69,4 +46,12 @@ export const lowerInventory = (product) => {
     type: 'LOWER_INVENTORY',
     payload: product
   }
+}
+
+export const fetchProducts = () => async (dispatch, getState) => {
+  const response = await axios.get('http://localhost:3001/products');
+  dispatch({
+    type: 'FETCH_PRODUCTS', 
+    payload: response.data,
+  });
 }

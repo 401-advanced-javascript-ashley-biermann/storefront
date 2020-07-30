@@ -2,30 +2,14 @@
  * Categories store
  * @component store
  */
-// STORE
 
+import axios from 'axios';
+
+// STORE
 const initialState = {
-  categories: [
-    {
-      normalizedName: 'Apparel',
-      displayName: 'Clothes',
-      description: 'A nice little description of category goes here'
-    },
-    {
-      normalizedName: 'Groceries',
-      displayName: 'Food',
-      description: 'A nice little description of category goes here'
-    },
-    {
-      normalizedName: 'Electronics',
-      displayName: 'Electronics',
-      description: 'A nice little description of category goes here'
-    }
-  ],
-  activeCategory: {},
+  categories: [],
+  activeCategory: {}
 }
-// Create an action that will trigger the reducer to change the active category
-// Update the active category in the reducer when this action is dispatched
 
 // REDUCERS
 export default (state = initialState, action) => {
@@ -34,8 +18,8 @@ export default (state = initialState, action) => {
   switch (type) {
     case 'CHANGE_CATEGORY':
       return {...state, activeCategory: payload };
-    // case 'RESET':
-    //   return initialState;
+    case 'FETCH_CATEGORIES':
+      return {...state, categories: payload};
     default:
       return state;
   }
@@ -45,12 +29,14 @@ export default (state = initialState, action) => {
 export const changeCategory = (categoryName) => {
   return {
     type: 'CHANGE_CATEGORY',
-    payload: categoryName
+    payload: categoryName,
   }
 }
 
-// export const reset = () => {
-//   return {
-//     type: 'RESET'
-//   }
-// }
+export const fetchCategories = () => async (dispatch, getState) => {
+  const response = await axios.get('http://localhost:3001/categories');
+  dispatch({
+    type: 'FETCH_CATEGORIES',
+    payload: response.data,
+  });
+}

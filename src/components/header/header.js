@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+// TODO: Update the header cart so it increments based on the number of items in the simple cart
 const Header = props => {
   const classes = useStyles();
 
