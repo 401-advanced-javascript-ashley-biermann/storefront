@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, List, ListItem, Paper, Typography } from '@material-ui/core';
 
-
 const ProductDetails = props => {
 
   let { products } = props;
+
+  console.log('products form details page', products);
 
   return (
     <div>

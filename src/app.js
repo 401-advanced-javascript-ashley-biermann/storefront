@@ -33,11 +33,11 @@ export default class App extends React.Component {
               <CheckoutCart />
             </Route>
 
-            <Route exact path="/products">
+            <Route>
+              {/* // TODO: this needs to be called in the products page */}
               <ProductDetails />
             </Route>
             
-
           </BrowserRouter>
           <Footer />
         </Provider>

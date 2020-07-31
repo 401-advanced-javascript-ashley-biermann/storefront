@@ -5,6 +5,8 @@
 
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Link, NavLink } from 'react-router-dom';
+import ProductDetails from '../products/details.js';
+
 
 // connect let's us opt-in to the store
 import { connect } from 'react-redux';
@@ -36,8 +38,7 @@ const Products = props => {
       <List>
 
         {products.map((product, idx) => {
-         let url = "/products/" + products[idx].id;
-         console.log(url);
+          let url = "/products/" + products[idx].id;
 
           return (
             <If condition={product.category === categories.activeCategory.normalizedName && product.inventoryCount > 0}>
@@ -51,7 +52,13 @@ const Products = props => {
 
                 <ListItem key={idx + '4'}>
                   <Link activeClassName='selected' to={url}>Details</Link>
-                  </ListItem>
+                </ListItem>
+
+                <BrowserRouter>
+                  <Route exact path="/products">
+                    <ProductDetails />
+                  </Route>
+                </BrowserRouter>
 
                 <Button varient="outlined" onClick={() => addToCart(product)}> Add To Cart </Button>
 
