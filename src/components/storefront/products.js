@@ -54,11 +54,13 @@ const Products = props => {
                   <Link activeClassName='selected' to={url}>Details</Link>
                 </ListItem>
 
+{/* FIXME: THought - rather than have a browswer route here, stll send to /products/ but then add into the params the id of the chose product */}
                 <BrowserRouter>
                   <Route exact path="/products">
                     <ProductDetails />
                   </Route>
                 </BrowserRouter>
+
 
                 <Button varient="outlined" onClick={() => addToCart(product)}> Add To Cart </Button>
 
