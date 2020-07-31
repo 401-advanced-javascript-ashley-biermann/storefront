@@ -76,8 +76,6 @@ const Header = props => {
                 <MenuItem>
                   <Link activeClassName='selected' to="/">Home</Link>
 
-                  <Link activeClassName='selected' to="https://www.google.com/">Product Details</Link>
-
                   <Link activeClassName='selected' to="/cart">Checkout</Link>
                 </MenuItem>
 

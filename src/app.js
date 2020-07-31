@@ -6,6 +6,7 @@ import Categories from './components/storefront/categories.js';
 import Products from './components/storefront/products.js';
 import SimpleCart from './components/cart/simplecart.js';
 import CheckoutCart from './components/cart/checkout.js';
+import ProductDetails from './components/products/details.js';
 
 // Setting up the global state
 import { Provider } from 'react-redux';
@@ -32,6 +33,10 @@ export default class App extends React.Component {
               <CheckoutCart />
             </Route>
 
+            <Route exact path="/products">
+              <ProductDetails />
+            </Route>
+            
 
           </BrowserRouter>
           <Footer />
