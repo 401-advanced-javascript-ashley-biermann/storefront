@@ -1,4 +1,4 @@
-# LAB - Class 36
+# LAB - Class 39
 
 ## Project: Storefront
 
@@ -6,10 +6,8 @@
 
 ### Links and Resources
 
-- [submission PR](https://github.com/401-advanced-javascript-ashley-biermann/storefront/pull/4)
+- [submission PR](https://github.com/401-advanced-javascript-ashley-biermann/storefront/pull/6)
 - [ci/cd](https://github.com/401-advanced-javascript-ashley-biermann/notes/tree/master/.github/workflows) (GitHub Actions)
-- [back-end server url]() (when applicable)
-- [front-end application]() (when applicable)
 
 ### Setup
 
@@ -22,7 +20,7 @@
 #### Tests
 
 - `npm test`
-- not yet implemented
+- tests some reducers and some actions
 
 #### UML
 
